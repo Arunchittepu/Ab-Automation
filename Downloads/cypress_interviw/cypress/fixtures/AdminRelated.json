@@ -1,0 +1,11 @@
+
+  {
+    "hintsName": "Ravi B",
+    "checkUserName": "Admin1",
+    "AddUserUrl": "https://opensource-demo.orangehrmlive.com/web/index.php/admin/saveSystemUser",
+    "password": "Admin567",
+    "confirmpassword": "Admin567",
+    "HintAdd": "ABCD CDEF",
+    "UsernameAdd": "A12345"
+  }
+
