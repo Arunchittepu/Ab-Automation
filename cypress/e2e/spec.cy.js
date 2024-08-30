@@ -13,7 +13,7 @@ describe('template spec', () => {
 
 })
   it('click on Amazon Music Module and check the sub modules inside', () =>{
-    cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click();
+    cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click({force:true});
     cy.wait(3000);
     cy.get('a[data-menu-id="2"]').eq(0).scrollIntoView().click();
     cy.contains('Amazon Music Unlimited').should('have.class','hmenu-item');
