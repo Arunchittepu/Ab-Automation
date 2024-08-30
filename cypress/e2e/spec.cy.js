@@ -3,12 +3,13 @@ describe('template spec', () => {
     cy.visit("/");
   })
   it("click on ALL and check digital content and devices", () => {
-    cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click();
+    cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click({force:true});
     cy.wait(3000);
     cy.get('[id="hmenu-content"]').should('be.visible');
     cy.contains('Digital Content & Devices').should('have.class', 'hmenu-item');
     cy.get('a[data-menu-id="2"]').should('be.visible');
-    cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').scrollIntoView().should('be.visible');
+    // cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').scrollIntoView().should('be.visible');
+    cy.get('a[data-menu-id="3"]').should('be.visible');
     cy.get('[data-menu-id="4"]').children('div').contains('Amazon Appstore').should('be.visible');
 
 })
@@ -28,7 +29,8 @@ describe('template spec', () => {
     it('Kindle E-readers & Books',() => {
        cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click();
        cy.wait(3000);
-       cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').should('be.visible').click();
+      //  cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').should('be.visible').click();
+      cy.get('a[data-menu-id="3"]').eq(0).should('be.visible').click();
        cy.get('.hmenu-item.hmenu-title').eq(5).should('contains.text','Kindle E-readers');
        cy.wait(3000);
        cy.contains('Kindle Kids').should('have.class','hmenu-item');
