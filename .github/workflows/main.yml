@@ -1,19 +1,37 @@
 name: Add Action
+
 on:
- push:
-   branches:
-     - main
+  push:
+    branches:
+      - main
+
 jobs:
- Cypress-Test:
-   runs-on: ubuntu-latest
-   steps:
-     - name: Checkout GitCode
-       uses: actions/checkout@v2
-     - name: Cypress run
-       uses: cypress-io/github-action@v6
-       with:
-           command: npx cypress run 
-           browser: chrome
-           wait-on: 'http://localhost:3000'
-       env:
-           CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+  Cypress-Test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout GitCode
+        uses: actions/checkout@v2
+
+      # Step to install dependencies (including server dependencies)
+      - name: Install Dependencies
+        run: npm install
+
+      # Step to start your server
+      - name: Start Server
+        run: npm start & # Ensure this runs in the background
+
+      # Wait for the server to be ready
+      - name: Wait for server to be ready
+        uses: jakejarvis/wait-on-action@v2
+        with:
+          url: 'http://localhost:3000'
+          timeout: 120 # Timeout in seconds (adjust as needed)
+
+      # Run Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v6
+        with:
+          browser: chrome
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
