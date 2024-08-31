@@ -20,13 +20,6 @@ jobs:
       - name: Start Server
         run: npm start & # Ensure this runs in the background
 
-      # Wait for the server to be ready
-      - name: Wait for server to be ready
-        uses: jakejarvis/wait-on-action@v2
-        with:
-          url: 'http://localhost:3000'
-          timeout: 120 # Timeout in seconds (adjust as needed)
-
       # Run Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
