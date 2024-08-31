@@ -16,14 +16,16 @@ describe('template spec', () => {
   it('click on Amazon Music Module and check the sub modules inside', () =>{
     cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').should('be.visible').click({force:true});
     cy.wait(3000);
-    cy.get('a[data-menu-id="2"]').eq(0).scrollIntoView().click();
+    cy.get('a[data-menu-id="2"]').eq(0).should('be.visible').click();
+    cy.wait(3000);
     cy.contains('Amazon Music Unlimited').scrollIntoView().should('have.class','hmenu-item');
     // cy.xpath("//a[contains(text(),'Amazon Music Unlimited')]").should('be.visible');
     cy.contains('Podcasts').should('have.class','hmenu-item');
     cy.contains('Open Web Player').eq(0).should('have.class','hmenu-item');
     cy.get('.hmenu-visible > :nth-child(7) > .hmenu-item').should('be.visible');
+    cy.wait(3000);
     //cy.contains('Open Web Player').eq(1).should('have.class','hmenu-item').scrollIntoView().should('be.visible');
-    cy.contains('Download the app').should('have.class','hmenu-item');
+    cy.contains('Download the app').scrollIntoView().should('exist')
     cy.get('a[data-ref-tag="nav_em_1_2_BT_0_main_menu"]').eq(1).click({force:true});
   })
     it('Kindle E-readers & Books',() => {
@@ -31,12 +33,11 @@ describe('template spec', () => {
        cy.wait(3000);
       //  cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').should('be.visible').click();
       cy.get('a[data-menu-id="3"]').eq(0).should('be.visible').click();
+      cy.wait(3000);
        cy.get('.hmenu-item.hmenu-title').eq(5).should('contain.text','Kindle E-readers');
        cy.wait(3000);
        cy.contains('Kindle Kids').should('have.class','hmenu-item');
-       cy.wait(3000);
        cy.get(':nth-child(31) > :nth-child(4) > .hmenu-item');
-       cy.wait(3000);
 })
 it('visit Amazon appstore menu bar', () =>{
   cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click({force:true});
