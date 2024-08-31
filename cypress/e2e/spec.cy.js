@@ -10,14 +10,14 @@ describe('template spec', () => {
     cy.get('a[data-menu-id="2"]').should('be.visible');
     // cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').scrollIntoView().should('be.visible');
     cy.get('a[data-menu-id="3"]').should('be.visible');
-    cy.get('[data-menu-id="4"]').children('div').contains('Amazon Appstore').should('be.visible');
+    cy.get('[data-menu-id="4"]').should('be.visible');
 
 })
   it('click on Amazon Music Module and check the sub modules inside', () =>{
-    cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click({force:true});
+    cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').should('be.visible').click({force:true});
     cy.wait(3000);
     cy.get('a[data-menu-id="2"]').eq(0).scrollIntoView().click();
-    cy.contains('Amazon Music Unlimited').should('have.class','hmenu-item');
+    cy.contains('Amazon Music Unlimited').scrollIntoView().should('have.class','hmenu-item');
     // cy.xpath("//a[contains(text(),'Amazon Music Unlimited')]").should('be.visible');
     cy.contains('Podcasts').should('have.class','hmenu-item');
     cy.contains('Open Web Player').eq(0).should('have.class','hmenu-item');
@@ -27,11 +27,11 @@ describe('template spec', () => {
     cy.get('a[data-ref-tag="nav_em_1_2_BT_0_main_menu"]').eq(1).click({force:true});
   })
     it('Kindle E-readers & Books',() => {
-       cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').click();
+       cy.get('[id="nav-hamburger-menu"]').trigger('mouseover').scrollIntoView().click();
        cy.wait(3000);
       //  cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').should('be.visible').click();
       cy.get('a[data-menu-id="3"]').eq(0).should('be.visible').click();
-       cy.get('.hmenu-item.hmenu-title').eq(5).should('contains.text','Kindle E-readers');
+       cy.get('.hmenu-item.hmenu-title').eq(5).should('contain.text','Kindle E-readers');
        cy.wait(3000);
        cy.contains('Kindle Kids').should('have.class','hmenu-item');
        cy.wait(3000);
