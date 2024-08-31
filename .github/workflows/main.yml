@@ -14,8 +14,6 @@ jobs:
        with:
            command: npx cypress run 
            browser: chrome
-           build: npm run build
-           start: npm start
            wait-on: 'http://localhost:3000'
        env:
            CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
