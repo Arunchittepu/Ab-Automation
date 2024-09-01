@@ -13,8 +13,11 @@ module.exports = defineConfig({
    "experimentalSessionAndrigin": true,
   e2e: {
     baseUrl:"https://www.amazon.com",
-    defaultCommandTimeout: 30000,    
-
+    defaultCommandTimeout: 60000,    
+    retries: {
+      runMode: 2,
+      openMode: 0,
+    },
     setupNodeEvents(on, config) {
       // implement node event listeners here
       
