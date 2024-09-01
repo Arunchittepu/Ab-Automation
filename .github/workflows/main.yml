@@ -21,7 +21,7 @@ jobs:
         run: npm start & # Ensure this runs in the background
 
       # Run Cypress tests
-      - name: Cypress run
+      - name: Cypress run --headed
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
