@@ -27,16 +27,11 @@ jobs:
       env:
         NODE_ENV: test  # Optionally set NODE_ENV to test if required
 
-    # Step 5: Wait for the server to be ready
-    - name: Wait for server to be ready
-      uses: jakejarvis/wait-on-action@v2
-      with:
-        url: 'http://localhost:3000'  # Adjust to match your app's start URL
-
     # Step 6: Run Cypress tests
     - name: Run Cypress tests
       uses: cypress-io/github-action@v6
       with:
+        command: npx cypress run
         browser: chrome
         record: true  # Record the test run on Cypress Dashboard (optional)
       env:
