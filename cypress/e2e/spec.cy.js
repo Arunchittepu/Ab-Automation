@@ -25,7 +25,7 @@ describe('template spec', () => {
     cy.get('.hmenu-visible > :nth-child(7) > .hmenu-item').should('be.visible');
     cy.wait(3000);
     //cy.contains('Open Web Player').eq(1).should('have.class','hmenu-item').scrollIntoView().should('be.visible');
-    cy.contains('Download the app').scrollIntoView().should('exist')
+    cy.contains('Download the app').scrollIntoView().should('have.length','1')
     cy.get('a[data-ref-tag="nav_em_1_2_BT_0_main_menu"]').eq(1).click({force:true});
   })
     it('Kindle E-readers & Books',() => {
@@ -34,8 +34,8 @@ describe('template spec', () => {
       //  cy.get('[data-menu-id="3"]').children('div').contains('Kindle E-readers & Books').should('be.visible').click();
       cy.get('a[data-menu-id="3"]').eq(0).should('be.visible').click();
       cy.wait(3000);
-       cy.get('.hmenu-item.hmenu-title').eq(5).should('contain.text','Kindle E-readers');
-       cy.wait(3000);
+      cy.contains('div.hmenu-item.hmenu-title', 'Kindle E-readers').should('be.visible').click();
+      cy.wait(3000);
        cy.contains('Kindle Kids').should('have.class','hmenu-item');
        cy.get(':nth-child(31) > :nth-child(4) > .hmenu-item');
 })
