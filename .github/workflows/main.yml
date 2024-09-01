@@ -32,6 +32,7 @@ jobs:
     - name: Run Cypress tests
       uses: cypress-io/github-action@v6
       with:
+        command: npx cypress run
         browser: chrome
         record: true
       env:
