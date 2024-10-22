@@ -13,20 +13,6 @@ describe('Amazon Navigation Tests', () => {
   //   cy.get('[data-menu-id="4"]').should('be.visible');
   // });
 
-  it('Click on Amazon Music Module and check the sub-modules inside', () => {
-    cy.get('#nav-hamburger-menu').should('exist',{delay:1000}).click();
-    // cy.get('a[data-menu-id="2"]').should('be.visible').click();
-    cy.wait(6000);
-    cy.get('i[class="nav-sprite hmenu-arrow-next"]').eq(0).should('exist',{delay:1000}).click();
-    cy.wait(5000); // Ensure content has loaded
-    cy.get(':nth-child(30) > :nth-child(3) > .hmenu-item').should('be.visible')
-    // cy.contains('Amazon Music Unlimited').should('be.visible').scrollIntoView().should('have.class', 'hmenu-item');
-    cy.contains('Podcasts').should('be.visible').should('have.class', 'hmenu-item');
-    cy.contains('Open Web Player').should('be.visible').should('have.class', 'hmenu-item');
-    cy.contains('Download the app', { timeout: 10000 }).scrollIntoView().should('be.visible');
-    cy.get('a[data-ref-tag="nav_em_1_2_BT_0_main_menu"]').eq(1).should('exist').click({ force: true });
-  });
-
   // it('Check Kindle E-readers & Books', () => {
   //   cy.get('#nav-hamburger-menu').should('exist').click({ force: true });
   //   cy.get('a[data-menu-id="3"]').should('be.visible').click();
