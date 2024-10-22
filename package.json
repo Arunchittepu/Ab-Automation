@@ -1,12 +1,14 @@
 {
   "devDependencies": {
+    "@testing-library/cypress": "^10.0.2",
     "cypress": "^13.13.3",
     "cypress-cloud": "^1.10.2",
     "cypress-xpath": "^2.0.1"
-    
   },
   "scripts": {
-  "start": "npx cypress run --headed --browser chrome"
-}
-
+    "start": "npx cypress run --headed --browser chrome",
+    "cy:dev": "cypress open --config-file dev.config.js",
+    "cy:stage": "cypress open --config-file stage.config.js",
+    "cy:prod": "cypress open --config-file prod.config.js"
+  }
 }
